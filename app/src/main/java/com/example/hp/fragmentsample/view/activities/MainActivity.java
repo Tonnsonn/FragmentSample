@@ -13,10 +13,9 @@ import com.example.hp.fragmentsample.R;
 import com.example.hp.fragmentsample.view.fragments.DashbordFragment;
 import com.example.hp.fragmentsample.view.fragments.HomeFragment;
 import com.example.hp.fragmentsample.view.fragments.NotificationFragment;
+import com.example.hp.fragmentsample.view.fragments.SettingsFragment;
 
 public class MainActivity extends AppCompatActivity {
-
-
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -26,18 +25,18 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.navigation_home:
                     addFragment(new HomeFragment());
                     break;
-                   case R.id.navigation_dashboard:
-                       addFragment(new DashbordFragment());
-                       break;
+                case R.id.navigation_dashboard:
+                    addFragment(new DashbordFragment());
+                    break;
                 case R.id.navigation_notifications:
                     addFragment(new NotificationFragment());
                     break;
+                case R.id.navigation_settings:
+                    addFragment(new SettingsFragment());
+                    break;
             }
-
             return true;
         }
-
-
     };
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,11 +46,17 @@ public class MainActivity extends AppCompatActivity {
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
     }
-    private void addFragment(Fragment fragment){
+
+    private void addFragment(Fragment fragment) {
         FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
-        transaction.add(R.id.content,fragment,fragment.getClass().getName()).addToBackStack(fragment.getClass().getName());
+        transaction.add(R.id.content, fragment, fragment.getClass().getName()).addToBackStack(fragment.getClass().getName());
         transaction.commit();
     }
+    private void onBackckick(){
+        FragmentManager manager = getSupportFragmentManager();
 
-}
+
+    }
+
+    }
